@@ -1,4 +1,6 @@
 package com.packt.cardatabase.web;
+import javax.servlet.http.HttpServletResponse;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -13,7 +15,8 @@ public class CarController {
 	private CarRepository repository;
 	
 	@RequestMapping("/cars")
-	public Iterable<Car> getCars() {
+	public Iterable<Car> getCars(HttpServletResponse res) {
+		res.addHeader("X-Total-Count", "10");
 		return repository.findAll();
 	}
 }

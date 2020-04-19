@@ -49,6 +49,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		config.setAllowedHeaders(Arrays.asList("*"));
 		config.setAllowCredentials(true);
 		config.applyPermitDefaultValues();
+		config.addExposedHeader("X-Total-Count");;
 
 		source.registerCorsConfiguration("/**", config);
 		return source;
